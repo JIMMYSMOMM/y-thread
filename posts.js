@@ -74,7 +74,7 @@ function loadComments(post_id) {
         return;
     }
 
-    fetch(`api/comments/${post_id}`) // Changed from index.php
+    fetch(`api/comments?post_id=${post_id}`) // Changed from index.php
     .then(response => response.json())
     .then(comments => {
         console.log("Fetched Comments:", comments);
