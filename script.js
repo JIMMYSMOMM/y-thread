@@ -49,7 +49,7 @@ window.onload = function() {
 
 
 if (window.location.pathname == "/list.html"){
-    fetch("http://localhost:3000/users")
+    fetch("api/users")
     .then(response => response.json())
     .then(data => {
         let list = document.getElementById("userList");
@@ -64,13 +64,13 @@ if (window.location.pathname == "/list.html"){
     
     
     function deleteUserByName(username) {
-        fetch(`http://localhost:3000/users/name/${username}`, {
+        fetch(`api/users/name/${username}`, {
             method: 'DELETE'
         })
     }
 
     function createUser(name, email) {
-        fetch("http://localhost:3000/users")
+        fetch("api/users")
             .then(response => response.json())
             .then(users => {
                 let userExists = users.some(user => user.name === name);
@@ -80,7 +80,7 @@ if (window.location.pathname == "/list.html"){
 
                     let username = localStorage.getItem("username");
 
-                    fetch("http://localhost:3000/users")
+                    fetch("api/users")
                       .then(response => response.json())
                       .then(users => {
                         // Find the user by name
@@ -107,7 +107,7 @@ if (window.location.pathname == "/list.html"){
                 
                 } else {
                     // If the user doesn't exist, proceed with creation
-                    fetch('http://localhost:3000/users', {
+                    fetch('api/users', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
